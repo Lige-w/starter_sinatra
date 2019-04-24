@@ -5,3 +5,7 @@
     <li><%= toy.name %></li>
   <% end %>
 </ul>
+<form action="/dogs/<%= @dog.id %>" method="POST">
+  <input type="hidden" value="DELETE" name="_method">
+  <input type="submit" value="Delete this dog">
+</form>

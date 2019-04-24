@@ -1,10 +1,16 @@
 class ToyController < Sinatra::Base
 
   set :views, 'app/views/toy'
+  set :method_override, true
 
   get '/toys' do
     @toys = Toy.all
     erb :index
+  end
+
+  get '/toys/:id/edit' do
+    @toy = Toy.find(params[:id])
+    erb :edit
   end
 
   get '/toys/new' do
@@ -16,4 +22,16 @@ class ToyController < Sinatra::Base
     redirect "/dogs/#{params[:dog]}"
   end
 
+  patch '/toys/:id' do
+    @toy = Toy.find(params[:id])
+    @toy.update(name: params[:name])
+    @dog = Dog.find(params[:dog][:id])
+    redirect '/toys'
+  end
+
+  delete '/toys/:id' do
+    @toy = Toy.find(params[:id])
+    @toy.destroy
+    redirect '/toys'
+  end
 end

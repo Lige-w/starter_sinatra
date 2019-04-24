@@ -1,0 +1,16 @@
+<h1>Edit this toy</h1>
+
+<form action="/toys/<%= @toy.id %>"  method="post">
+  <input type="hidden" value="PATCH" name="_method">
+  <label for="name">Toy Name</label>
+  <input type="text" name="name" value="<%=@toy.name %>">
+  <label for="dog[name]"> Dog Name</label>
+  <input type="text" name="dog[name]" value="<%= @toy.dog.name %>">
+  <input type="hidden" value="<%= @toy.dog.id %>" name="dog[id]">
+  <input type="submit" value="Edit this toy">
+</form>
+
+<form action ="/toys/<%= @toy.id %>" method="POST">
+  <input type="hidden" value="DELETE" name="_method">
+  <input type="submit" value="Delete this toy">
+</form>
