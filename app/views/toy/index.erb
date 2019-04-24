@@ -1,0 +1,6 @@
+<h1>All the Puppers' TOYS!!!</h1>
+<ul>
+  <% @toys.each do |toy| %>
+    <li><%= toy.name %> is owned by <%= toy.dog.name %></li>
+  <% end %>
+</ul>
